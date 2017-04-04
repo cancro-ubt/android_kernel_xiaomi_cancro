@@ -368,7 +368,7 @@ KBUILD_CFLAGS   := -O3 -march=armv7 -mtune=arm7 -mfpu=neon-vfpv4 -ftree-vectoriz
 		   -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
 		   -Wno-format-security \
-		   -fno-delete-null-pointer-checks \
+		   -fno-delete-null-pointer-checks -Wno-maybe-uninitialized \
 		   -std=gnu89 \
 		   -pipe
 
@@ -725,7 +725,7 @@ vmlinux-alldirs	:= $(sort $(vmlinux-dirs) $(patsubst %/,%,$(filter %/, \
 		     $(net-n)  $(net-)  $(libs-n)    $(libs-) \
 		     $(backports-n) $(backports-))))
 
-backports-y 	:= $(patsubst $/, $/built-in.o, $(backports-y))
+backports-y	:= $(patsubst %/, %/built-in.o, $(backports-y))
 init-y		:= $(patsubst %/, %/built-in.o, $(init-y))
 core-y		:= $(patsubst %/, %/built-in.o, $(core-y))
 drivers-y	:= $(patsubst %/, %/built-in.o, $(drivers-y))
@@ -762,7 +762,7 @@ libs-y		:= $(libs-y1) $(libs-y2)
 # System.map is generated to document addresses of all kernel symbols
 
 vmlinux-init := $(head-y) $(init-y)
-vmlinux-main := $(core-y) $(libs-y) $(drivers-y) $(net-y)
+vmlinux-main := $(core-y) $(libs-y) $(drivers-y) $(net-y) $(backports-y)
 vmlinux-all  := $(vmlinux-init) $(vmlinux-main)
 vmlinux-lds  := arch/$(SRCARCH)/kernel/vmlinux.lds
 export KBUILD_VMLINUX_OBJS := $(vmlinux-all)

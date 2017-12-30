@@ -2089,9 +2089,9 @@ int vfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 	if (error)
 		return error;
 
-	error = security_inode_post_create(dir, dentry, mode);
-	if (error)
-		return error;
+	//error = security_inode_post_create(dir, dentry, mode);
+	//if (error)
+	//	return error;
 
 	if (!error)
 		fsnotify_create(dir, dentry);
@@ -2571,9 +2571,9 @@ int vfs_mknod(struct inode *dir, struct dentry *dentry, umode_t mode, dev_t dev)
 	if (error)
 		return error;
 
-	error = security_inode_post_create(dir, dentry, mode);
-	if (error)
-		return error;
+	//error = security_inode_post_create(dir, dentry, mode);
+	//if (error)
+	//	return error;
 
 	if (!error)
 		fsnotify_create(dir, dentry);

@@ -511,8 +511,8 @@ bool blk_rq_merge_ok(struct request *rq, struct bio *bio)
 		return false;
 
 	/* Don't merge bios of files with different encryption */
-	if (!security_allow_merge_bio(rq->bio, bio))
-		return false;
+	//if (!security_allow_merge_bio(rq->bio, bio))
+	//	return false;
 
 	return true;
 }

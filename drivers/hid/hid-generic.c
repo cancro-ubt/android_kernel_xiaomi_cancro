@@ -22,7 +22,7 @@
 #include <asm/byteorder.h>
 #include <linux/hid.h>
 static const struct hid_device_id hid_generic_devices[] = {
-	{ HID_DEVICE(HID_BUS_ANY, HID_ANY_ID, HID_ANY_ID) },
+	{ HID_DEVICE(HID_BUS_ANY, HID_GROUP_GENERIC, HID_ANY_ID, HID_ANY_ID) },
 	{ }
 };
 MODULE_DEVICE_TABLE(hid, hid_generic_devices);

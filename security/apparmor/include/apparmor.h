@@ -91,7 +91,6 @@ char *aa_splitn_fqname(char *fqname, size_t n, char **ns_name, size_t *ns_len);
 void aa_info_message(const char *str);
 void *__aa_kvmalloc(size_t size, gfp_t flags);
 
-
 static inline void *kvmalloc(size_t size)
 {
 	return __aa_kvmalloc(size, 0);

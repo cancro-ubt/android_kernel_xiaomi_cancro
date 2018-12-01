@@ -113,7 +113,7 @@ config HID_ACRUX_FF
 
 config HID_APPLE
 	tristate "Apple {i,Power,Mac}Books" if EXPERT
-	depends on HID
+	depends on (USB_HID || BACKPORT_BT_HIDP)
 	default !EXPERT
 	---help---
 	Support for some Apple devices which less or more break
@@ -213,7 +213,7 @@ config HID_EMS_FF
 
 config HID_ELECOM
 	tristate "ELECOM BM084 bluetooth mouse"
-	depends on HID
+	depends on BACKPORT_BT_HIDP
 	---help---
 	Support for the ELECOM BM084 (bluetooth mouse).
 
@@ -402,7 +402,7 @@ config LOGIWHEELS_FF
 
 config HID_MAGICMOUSE
 	tristate "Apple Magic Mouse/Trackpad multi-touch support"
-	depends on HID
+	depends on BACKPORT_BT_HIDP
 	---help---
 	Support for the Apple Magic Mouse/Trackpad multi-touch.
 
@@ -674,7 +674,7 @@ config SMARTJOYPLUS_FF
 
 config HID_TIVO
 	tristate "TiVo Slide Bluetooth remote control support"
-	depends on HID
+	depends on (USB_HID || BACKPORT_BT_HIDP)
 	---help---
 	Say Y if you have a TiVo Slide Bluetooth remote control.
 
@@ -713,7 +713,6 @@ config THRUSTMASTER_FF
 
 config HID_WACOM
 	tristate "Wacom Bluetooth devices support"
-	depends on HID
 	depends on LEDS_CLASS
 	select POWER_SUPPLY
 	---help---
@@ -721,7 +720,6 @@ config HID_WACOM
 
 config HID_WIIMOTE
 	tristate "Nintendo Wii / Wii U peripherals"
-	depends on HID
 	depends on LEDS_CLASS
 	select POWER_SUPPLY
 	select INPUT_FF_MEMLESS

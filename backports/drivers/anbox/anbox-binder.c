@@ -53,9 +53,9 @@
 
 #include "backports.h"
 
-//#ifdef CONFIG_ANBOX_BINDER_IPC_32BIT
-//#define BINDER_IPC_32BIT 1
-//#endif
+#ifdef CONFIG_ANBOX_BINDER_IPC_32BIT
+#define BINDER_IPC_32BIT 1
+#endif
 
 #define MAX_NICE 20
 
